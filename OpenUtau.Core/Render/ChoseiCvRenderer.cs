@@ -36,9 +36,6 @@ namespace OpenUtau.Core.Render {
             return baseRenderer.Layout(phrase);
         }
 
-        public (double HeadMs, double TailMs) PhrasePadding(USinger singer, IEnumerable<UPhoneme> phonemes) {
-            return baseRenderer.PhrasePadding(singer, phonemes);
-        }
 
         public RenderPitchResult LoadRenderedPitch(RenderPhrase phrase) {
             return baseRenderer.LoadRenderedPitch(phrase);
@@ -114,10 +111,13 @@ namespace OpenUtau.Core.Render {
                 float[] f0 = ExtractF0FromPhrase(phrase, draftResult, frames, hopLength, sr);
 
                 float strength = defaultStrength;
-                var smthCurve = phrase.curves?.FirstOrDefault(c => c.abbr == SMOOTHING_EXPR);
-                if (smthCurve != null && smthCurve.xs.Count > 0) {
-                    strength = Math.Clamp(smthCurve.ys.Average() / 100f, 0f, 1f);
+                if (phrase.curves != null) {
+                    var smthCurve = phrase.curves.FirstOrDefault(c => c.Item1 == SMOOTHING_EXPR);
+                    if (smthCurve.Item2 != null && smthCurve.Item2.Length > 0) {
+                        strength = Math.Clamp(smthCurve.Item2.Average() / 100f, 0f, 1f);
+                    }
                 }
+
 
                 var melTensor = new DenseTensor<float>(new[] { 1, nMels, frames });
                 var f0Tensor = new DenseTensor<float>(new[] { 1, 1, frames });
