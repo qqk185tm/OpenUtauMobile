@@ -25,6 +25,7 @@ jobs:
       - name: Restore dependencies (arm64 only)
         run: |
           dotnet restore OpenUtauMobile/OpenUtauMobile.csproj \
+            -p:TargetFramework=net9.0-android \
             -p:RuntimeIdentifiers=android-arm64 \
             -p:CheckEolWorkloads=false
 
