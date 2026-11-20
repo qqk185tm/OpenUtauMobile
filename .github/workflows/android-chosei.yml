@@ -33,7 +33,7 @@ jobs:
             -p:RuntimeIdentifiers=android-arm64 \
             -p:CheckEolWorkloads=false
 
-      - name: Build Android APK (arm64)
+      -      - name: Build Android APK (arm64)
         run: |
           dotnet publish OpenUtauMobile/OpenUtauMobile.csproj \
             --no-restore \
@@ -46,6 +46,9 @@ jobs:
             -p:RuntimeIdentifier=android-arm64 \
             -p:AndroidCreatePackagePerAbi=false \
             -p:RunAOTCompilation=false \
+            -p:PublishTrimmed=false \
+            -p:AndroidLinkTool="" \
+            -p:EnableTrimAnalyzer=false \
             -p:CheckEolWorkloads=false \
             -p:AcceptAndroidSDKLicenses=True
 
