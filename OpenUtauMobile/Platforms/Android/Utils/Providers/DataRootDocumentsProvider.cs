@@ -11,7 +11,7 @@ using Resource = Microsoft.Maui.Resource;
 namespace OpenUtauMobile.Platforms.Android.Providers
 {
     [ContentProvider(
-        ["pers.vocoder712.openutaumobile.documents"], // ID
+        ["pers.vocoder712.openutaumobile.chosei.documents"], // ID
         Name = "pers.vocoder712.openutaumobile.OpenUtauDocumentsProvider", // 类名
         Exported = true, // 允许外部访问
         GrantUriPermissions = true, // 允许授予URI权限
@@ -75,7 +75,7 @@ namespace OpenUtauMobile.Platforms.Android.Providers
 
             rowBuilder.Add(DocumentsContract.Root.ColumnRootId, RootId); // 根目录ID
             rowBuilder.Add(DocumentsContract.Root.ColumnDocumentId, GetDocIdForFile(BaseDir)); // 根目录对应的文档ID
-            rowBuilder.Add(DocumentsContract.Root.ColumnTitle, "OpenUtau Mobile"); // 根目录标题
+            rowBuilder.Add(DocumentsContract.Root.ColumnTitle, "OpenUtau chosei"); // 根目录标题
             rowBuilder.Add(DocumentsContract.Root.ColumnSummary, "OpenUtau数据目录"); // 根目录摘要
             rowBuilder.Add(DocumentsContract.Root.ColumnIcon, Resource.Mipmap.appicon); // 根目录图标资源ID
             rowBuilder.Add(DocumentsContract.Root.ColumnFlags, // 根目录标志
