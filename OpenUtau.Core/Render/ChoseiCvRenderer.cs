@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.ML.OnnxRuntime;
 using Microsoft.ML.OnnxRuntime.Tensors;
+using OpenUtau.Classic;
 using OpenUtau.Core.DiffSinger;
 using OpenUtau.Core.Ustx;
 
