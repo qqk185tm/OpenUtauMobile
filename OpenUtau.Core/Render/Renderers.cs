@@ -10,12 +10,13 @@ namespace OpenUtau.Core.Render {
     public static class Renderers {
         public const string CLASSIC = "CLASSIC";
         public const string WORLDLINER = "WORLDLINE-R";
+        public const string CHOSEI_CV = "CHOSEI-CV";
         public const string ENUNU = "ENUNU";
         public const string VOGEN = "VOGEN";
         public const string DIFFSINGER = "DIFFSINGER";
         public const string VOICEVOX = "VOICEVOX";
 
-        static readonly string[] classicRenderers = new[] { WORLDLINER, CLASSIC };
+        static readonly string[] classicRenderers = new[] { CHOSEI_CV, WORLDLINER, CLASSIC };
         static readonly string[] enunuRenderers = new[] { ENUNU };
         static readonly string[] vogenRenderers = new[] { VOGEN };
         static readonly string[] diffSingerRenderers = new[] { DIFFSINGER };
@@ -41,6 +42,7 @@ namespace OpenUtau.Core.Render {
 
         public static List<string> getRendererOptions() {
             return new List<string> {
+                "CHOSEI-CV",
                 "WORLDLINE-R",
                 "Classic"
             };
@@ -57,6 +59,8 @@ namespace OpenUtau.Core.Render {
         public static IRenderer CreateRenderer(string renderer) {
             if (renderer == CLASSIC) {
                 return new ClassicRenderer();
+            } else if (renderer == CHOSEI_CV) {
+                return new ChoseiCvRenderer();
             } else if (renderer?.StartsWith(WORLDLINER.Substring(0, 9)) ?? false) {
                 return new WorldlineRenderer();
             } else if (renderer == ENUNU) {
