@@ -19,8 +19,7 @@
       <!-- 排除原生库，iOS 不需要 MIDI 设备直接访问 -->
       <ExcludeAssets>native;build</ExcludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.ML.OnnxRuntime" Version="1.16.0" />
-    <PackageReference Include="Microsoft.ML.OnnxRuntime.Managed" Version="1.22.1" />
+    <PackageReference Include="Microsoft.ML.OnnxRuntime" Version="1.22.1" />
 	<PackageReference Include="Microsoft.Maui.Essentials" Version="9.0.30" />
     <PackageReference Include="NAudio.Core" Version="2.2.1" />
     <PackageReference Include="NAudio.Vorbis" Version="1.5.0" />
@@ -42,10 +41,8 @@
   </ItemGroup>
   <ItemGroup Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">
     <PackageReference Include="NAudio" Version="2.2.1" />
-    <PackageReference Include="Microsoft.ML.OnnxRuntime.DirectML" Version="1.16.3" />
   </ItemGroup>
   <ItemGroup Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'false'">
-    <PackageReference Include="Microsoft.ML.OnnxRuntime" Version="1.16.3" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Analysis\Crepe\Resources.Designer.cs">
