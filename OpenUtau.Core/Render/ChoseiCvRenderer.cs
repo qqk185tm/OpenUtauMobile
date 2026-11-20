@@ -16,6 +16,14 @@ namespace OpenUtau.Core.Render {
     public class ChoseiCvRenderer : IRenderer {
         public const string SMOOTHING_EXPR = "smth";
 
+        static ChoseiCvRenderer() {
+#if ANDROID
+    try {
+        Java.Lang.JavaSystem.LoadLibrary("onnxruntime");
+    } catch { }
+#endif
+}
+
         private static readonly object lockObj = new object();
         private static InferenceSession? refinerSession;
         private static DsVocoder? vocoder;
