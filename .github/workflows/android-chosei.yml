@@ -22,8 +22,12 @@ jobs:
       - name: Install MAUI Android workload
         run: dotnet workload install maui-android --skip-manifest-update
 
-      - name: Restore dependencies
-        run: dotnet restore OpenUtauMobile/OpenUtauMobile.csproj -p:TargetFramework=net9.0-android -p:CheckEolWorkloads=false
+      - name: Restore dependencies (arm64 only)
+        run: |
+          dotnet restore OpenUtauMobile/OpenUtauMobile.csproj \
+            -p:TargetFramework=net9.0-android \
+            -p:RuntimeIdentifiers=android-arm64 \
+            -p:CheckEolWorkloads=false
 
       - name: Build Android APK (arm64)
         run: |
@@ -31,6 +35,7 @@ jobs:
             -f net9.0-android \
             -c Release \
             -p:AndroidPackageFormat=apk \
+            -p:RuntimeIdentifiers=android-arm64 \
             -p:RuntimeIdentifier=android-arm64 \
             -p:TargetFrameworks=net9.0-android \
             -p:AndroidCreatePackagePerAbi=false \
