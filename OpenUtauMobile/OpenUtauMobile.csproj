@@ -62,16 +62,17 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-android|AnyCPU'">
-	  <JavaMaximumHeapSize>4G</JavaMaximumHeapSize>
-	  <AndroidPackageFormat>apk</AndroidPackageFormat>
-	  <EnableLLVM>False</EnableLLVM>
-	  <RunAOTCompilation>True</RunAOTCompilation>
-	  <Debugger>Xamarin</Debugger>
-	  <AndroidEnableSGenConcurrent>True</AndroidEnableSGenConcurrent>
-	  <AndroidLinkTool>r8</AndroidLinkTool>
-	  <AndroidCreatePackagePerAbi>True</AndroidCreatePackagePerAbi>
-		<RuntimeIdentifiers>android-arm;android-arm64;android-x86;android-x64</RuntimeIdentifiers>
-	</PropertyGroup>
+  <JavaMaximumHeapSize>4G</JavaMaximumHeapSize>
+  <AndroidPackageFormat>apk</AndroidPackageFormat>
+  <EnableLLVM>False</EnableLLVM>
+  <RunAOTCompilation>False</RunAOTCompilation>
+  <PublishTrimmed>False</PublishTrimmed>
+  <Debugger>Xamarin</Debugger>
+  <AndroidEnableSGenConcurrent>True</AndroidEnableSGenConcurrent>
+  <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
+  <RuntimeIdentifiers>android-arm64</RuntimeIdentifiers>
+</PropertyGroup>
+
 
 	<!-- 原生库 -->
 	<!--<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-android'">
