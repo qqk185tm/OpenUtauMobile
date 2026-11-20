@@ -19,8 +19,10 @@ jobs:
         with:
           dotnet-version: '9.0.x'
 
-      - name: Install MAUI Android and Wasm workloads
-        run: dotnet workload install maui-android wasm-tools --skip-manifest-update
+      - name: Install required .NET 9 workloads
+        run: |
+          dotnet workload install maui-android wasm-tools-net9 --skip-manifest-update
+          dotnet workload restore OpenUtauMobile/OpenUtauMobile.csproj --skip-manifest-update
 
       - name: Restore dependencies (arm64 only)
         run: |
