@@ -6,17 +6,22 @@ on:
 jobs:
   build-android:
     runs-on: ubuntu-latest
+    env:
+      DOTNET_NOLOGO: true
+      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+      # Разрешаем сборку на .NET 9 без блокировки по сроку поддержки
+      DOTNET_CLI_WORKLOAD_UPDATE_NOTIFY_DISABLE: true
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup .NET 9
+      - name: Setup .NET 9.0
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '9.0.x'
+          dotnet-version: '9.0.300'
 
       - name: Install MAUI Android workload
-        run: dotnet workload install maui-android
+        run: dotnet workload install maui-android --skip-manifest-update
 
       - name: Restore dependencies
         run: dotnet restore OpenUtauMobile/OpenUtauMobile.csproj -p:TargetFramework=net9.0-android
@@ -30,7 +35,8 @@ jobs:
             -p:RuntimeIdentifier=android-arm64 \
             -p:TargetFrameworks=net9.0-android \
             -p:AndroidCreatePackagePerAbi=false \
-            -p:RunAOTCompilation=false
+            -p:RunAOTCompilation=false \
+            -p:CheckEolWorkloads=false
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
