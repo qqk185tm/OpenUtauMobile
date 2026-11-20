@@ -33,9 +33,9 @@ jobs:
             -p:RuntimeIdentifiers=android-arm64 \
             -p:CheckEolWorkloads=false
 
-      -      - name: Build Android APK (arm64)
+      - name: Build Android APK (arm64)
         run: |
-          dotnet publish OpenUtauMobile/OpenUtauMobile.csproj \
+            dotnet publish OpenUtauMobile/OpenUtauMobile.csproj \
             --no-restore \
             -f net9.0-android \
             -p:TargetFramework=net9.0-android \
