@@ -22,10 +22,10 @@
 		<!--<MauiEnableXamlCBindingWithSourceCompilation>true</MauiEnableXamlCBindingWithSourceCompilation>-->
 
 		<!-- 外显名称 -->
-		<ApplicationTitle>OpenUtau Mobile</ApplicationTitle>
+		<ApplicationTitle>OpenUtau Mobile Chosei</ApplicationTitle>
 
 		<!-- 应用ID -->
-		<ApplicationId>pers.vocoder712.openutaumobile</ApplicationId>
+		<ApplicationId>pers.vocoder712.openutaumobile.chosei</ApplicationId>
 
 		<!-- 版本 -->
 		<ApplicationDisplayVersion>1.1.7</ApplicationDisplayVersion>
