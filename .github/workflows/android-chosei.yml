@@ -22,8 +22,8 @@ jobs:
       - name: Pin .NET 9 SDK & Install Android workload
         run: |
           dotnet new globaljson --sdk-version $(dotnet --list-sdks | grep "^9\." | tail -n 1 | awk '{print $1}') --force
-          sudo -H dotnet workload update
-          sudo -H dotnet workload install maui-android
+          sudo XDG_RUNTIME_DIR=/tmp dotnet workload update
+          sudo XDG_RUNTIME_DIR=/tmp dotnet workload install maui-android
 
       - name: Restore dependencies (arm64 only)
         run: |
