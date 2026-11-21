@@ -82,8 +82,15 @@ namespace OpenUtau.Core.Render {
                             }
                         } catch { }
                     }
-                    refinerSession = Onnx.getInferenceSession(File.ReadAllBytes(refinerOnnx));
-                }
+                    try {
+    refinerSession = Onnx.getInferenceSession(refinerOnnx);
+} catch (Exception ex) {
+    var inner = ex;
+    while (inner.InnerException != null) {
+        inner = inner.InnerException;
+    }
+    throw new Exception($"ONNX INIT FAILED: {inner.GetType().Name}: {inner.Message}");
+
 
                 if (vocoder == null) {
                     string? vocoderYaml = Directory.GetFiles(depRoot, "vocoder.yaml", SearchOption.AllDirectories)
