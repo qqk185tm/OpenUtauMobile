@@ -90,6 +90,8 @@ namespace OpenUtau.Core.Render {
         inner = inner.InnerException;
     }
     throw new Exception($"ONNX INIT FAILED: {inner.GetType().Name}: {inner.Message}");
+                    }
+                }
 
 
                 if (vocoder == null) {
